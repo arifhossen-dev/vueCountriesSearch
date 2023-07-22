@@ -68,7 +68,7 @@ const getCountriesStartWithLetterB = (target) => {
 
             </li>
           </template>
-          <li class="col-span-4 p-3 border-2 border-red-300 rounded-lg bg-red-200/70">
+          <li v-else class="col-span-4 p-3 border-2 border-red-300 rounded-lg bg-red-200/70">
             <h3 class="py-2 text-lg font-bold text-red-500">Sorry 💔 No result found</h3>
           </li>
 
