@@ -43,24 +43,30 @@ const getCountriesStartWithLetterB = (target) => {
           <template v-if="getCountriesStartWithLetterB(q).length" v-for="(item, index) in getCountriesStartWithLetterB(q)"
             :key="index">
             <li class="flex flex-col justify-between p-3 rounded-lg shadow-md bg-white/60 gap-x-4">
-              <div>
+              <div class="mb-2">
                 <h2 class="font-bold leading-6 text-gray-700">{{ item.country }} <span
                     class="inline-flex items-center px-2 py-1 ml-2 text-xs text-pink-700 bg-pink-100 rounded-md">{{
                       item.abbreviation }}</span></h2>
-                <p class="text-xs leading-5 text-gray-500 truncate">{{ item.city }}</p>
+                <p class="leading-5 text-gray-800 truncate">{{ item.city }}</p>
               </div>
               <img class="flex-none rounded" :src="item.flag_src" :alt="item.flag_src">
 
               <div class="min-w-0">
                 <h3 class="py-2 text-lg font-bold text-gray-700">Currency details</h3>
                 <p class="text-xs leading-5 text-gray-500 truncate"></p>
-                <p>Symbol: <span class="text-lg font-bold">{{ item.currency_details?.symbol }}</span> <span
-                    class="inline-flex items-center px-2 py-0.5 ml-2 font-bold text-indigo-700 bg-indigo-100 rounded-md">
+
+                <p>
+                  Symbol:
+                  <span class="text-lg font-bold">{{ item.currency_details?.symbol }}</span>
+                  <span :class="item.currency_details?.code ? 'inline-flex' : 'hidden'"
+                    class="items-center px-2 py-0.5 ml-2 font-bold text-indigo-700 bg-indigo-100 rounded-md">
                     {{ item.currency_details?.symbol_native }}
-                  </span></p>
-                <p>{{ item.currency_details?.name }}
-                  <span
-                    class="inline-flex items-center px-2 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded-md">
+                  </span>
+                </p>
+                <p class="mt-2">
+                  {{ item.currency_details?.name }}
+                  <span class="items-center px-2 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded-md"
+                    :class="item.currency_details?.code ? 'inline-flex' : 'hidden'">
                     {{ item.currency_details?.code }}
                   </span>
                 </p>
